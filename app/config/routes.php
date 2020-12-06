@@ -45,11 +45,14 @@ use Cake\Routing\RouteBuilder;
 $routes->setRouteClass(DashedRoute::class);
 
 $routes->scope('/', function (RouteBuilder $builder) {
+    $builder->connect('/', ['controller' => 'Users', 'action' => 'index']);
     $builder->fallbacks();
 });
 
-$routes->scope('/api', ['_namePrefix' => 'api:'], function (RouteBuilder $builder) {
-    $builder->resources('Users');
-    $builder->setExtensions(['json', 'xml']);
- });
+$routes->prefix('Api', function (RouteBuilder $routes) {
+    // Because you are in the admin scope,
+    // you do not need to include the /admin prefix
+    // or the Admin route element.
+    $routes->connect('/', ['controller' => 'Users', 'action' => 'index']);
+});
 
