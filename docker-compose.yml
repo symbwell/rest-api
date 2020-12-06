@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb
+    volumes:
+      - /var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_HOST: 172.18.0.1
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: ps
+      MYSQL_USER: ps
+      MYSQL_PASSWORD: ps
+    ports:
+      - "3308:3306"
+  www:
+    depends_on:
+      - db
+    container_name: rest-api-www
+    build: ./docker/www/
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/var/www/html
+
