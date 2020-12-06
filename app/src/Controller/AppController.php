@@ -14,6 +14,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -56,8 +57,10 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
 
-        $this->RequestHandler->renderAs($this, 'json');
-        $this->response->mapType('application/json');
-        $this->set('_serialize', true);
+        if ($this->request->getParam('prefix') === 'api') {
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->mapType('application/json');
+            $this->set('_serialize', true);
+        }
     }
 }
