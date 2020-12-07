@@ -19,6 +19,6 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['get']);
 
-        $this->set('data', $this->Users->find());
+        $this->set('users', $this->Users->find());
     }
 }
