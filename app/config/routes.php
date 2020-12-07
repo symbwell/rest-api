@@ -54,5 +54,9 @@ $routes->prefix('Api', function (RouteBuilder $routes) {
     // you do not need to include the /admin prefix
     // or the Admin route element.
     $routes->connect('/', ['controller' => 'Users', 'action' => 'index']);
+    $routes->resources('Users');
+    $routes->setExtensions(['json', 'xml']);
+
+    $routes->fallbacks();
 });
 
