@@ -13,7 +13,7 @@ Możliwości:
 
 ## Wersja Online
 
-Wersja online dostępna jest pod adresem: [restapi.paranormalstudio.pl](https://restapi.paranormalstudio.pl)
+Wersja online dostępna jest pod adresem: [restapi.paranormalstudio.pl](http://restapi.paranormalstudio.pl)
 
 ## Korzystanie z API
 
