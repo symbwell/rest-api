@@ -61,6 +61,12 @@ Krok drugi to instalacja CakePHP z użyciem komendy:
 $ composer install
 ```
 
+Na koniec należy zalogować się do CLI dockera o nazwie **rest-api-www** i uruchomić migracje w katalogu głównym aplikacji.
+
+```
+bin/cake migrations migrate
+```
+
 Aplikacja powinna być dostępna pod adresem [localhost:8080](http://localhost:8080)
 
 ## Dodatkowe metody
