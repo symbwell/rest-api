@@ -37,8 +37,10 @@ class UserControllerTest extends TestCase
         ];
 
         $this->post('/api/users/add', $user);
-        $count = $this->Users->find('all')->where($user)->count();
-        $this->assertEquals(1, $count);
+        $this->assertResponseSuccess();
+        $users = $this->getTableLocator()->get('Users');
+        $query = $users->find('all')->where($user)->count();
+        $this->assertEquals(1, $query);
     }
 
     public function testView()
@@ -69,9 +71,20 @@ class UserControllerTest extends TestCase
         $this->assertEquals($expected, (string)$this->_response->getBody());
     }
 
-    public function testEdit()
+    public function testUpdate()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $toModify = [
+            'name' => 'bdbdb',
+            'surname' => 'e222',
+            'phone' => '1321321',
+        ];
+
+        $this->put('/api/users/update/27f9ca5d-7252-437d-b34b-12a3de08b23e', $toModify);
+        $this->assertResponseSuccess();
+        $users = $this->getTableLocator()->get('Users');
+        $query = $users->find()->where(['name' => 'bdbdb', 'surname' => 'e222', 'phone' => '1321321']);
+
+        $this->assertEquals(1, $query->count());
     }
 
     public function testDelete()
