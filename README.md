@@ -52,7 +52,13 @@ Zapytaniu PUT i POST przyjmują następujące klucze:
 
 Krok pierwszy to uruchomienie przygotowanego dockera następującą komendą w katalogu głównym:
 ```
-docker-compose up
+$ docker-compose up
+```
+
+Krok drugi to instalacja CakePHP z użyciem komendy:
+
+```
+$ composer install
 ```
 
 Aplikacja powinna być dostępna pod adresem [localhost:8080](http://localhost:8080)
