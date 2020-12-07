@@ -2,13 +2,16 @@ version: "3"
 
 services:
   db:
-    image: mariadb
+    container_name: rest-api-mysql
+    image: mariadb:latest
     volumes:
       - /var/lib/mysql
+      - ./docker/sql/test.sql:/docker-entrypoint-initdb.d/test.sql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_HOST: 172.18.0.1
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: ps
       MYSQL_USER: ps
       MYSQL_PASSWORD: ps
