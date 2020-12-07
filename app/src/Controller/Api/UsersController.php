@@ -58,6 +58,10 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['put']);
 
+        if ($id === null) {
+            throw new NotFoundException('User not found. Please, specify the ID.');
+        }
+
         $user = $this->Users->get($id);
 
         if ($this->request->is('put')) {
@@ -80,6 +84,10 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['get']);
 
+        if ($id === null) {
+            throw new NotFoundException('User not found. Please, specify the ID.');
+        }
+
         $user = $this->Users->get($id);
 
         $this->set('data', $user);
@@ -93,6 +101,10 @@ class UsersController extends AppController
     public function delete(string $id = null)
     {
         $this->request->allowMethod(['delete']);
+
+        if ($id === null) {
+            throw new NotFoundException('User not found. Please, specify the ID.');
+        }
 
         $user = $this->Users->get($id);
 
