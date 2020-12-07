@@ -57,10 +57,12 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
 
-        if ($this->request->getParam('prefix') === 'api') {
+        if ($this->request->getParam('prefix') === 'Api') {
+
             $this->RequestHandler->renderAs($this, 'json');
             $this->response->mapType('application/json');
             $this->set('_serialize', true);
         }
+
     }
 }
