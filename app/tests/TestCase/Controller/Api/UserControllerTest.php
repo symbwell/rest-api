@@ -89,16 +89,11 @@ class UserControllerTest extends TestCase
 
     public function testDelete()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $this->delete('/api/users/delete/27f9ca5d-7252-437d-b34b-12a3de08b23e');
+        $this->assertResponseSuccess();
+        $users = $this->getTableLocator()->get('Users');
+        $query = $users->find()->where(['id' => '27f9ca5d-7252-437d-b34b-12a3de08b23e']);
 
-    public function testGetName()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    public function testSetName()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertEquals(0, $query->count());
     }
 }
