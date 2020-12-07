@@ -4,8 +4,10 @@ namespace App\Controller\Api;
 
 use App\Controller\AppController;
 use App\Error\Exception\ValidationErrorException;
+use Cake\Event\EventInterface;
 
-class UsersController extends AppController {
+class UsersController extends AppController
+{
 
     public $paginate = [
         'page' => 1,
@@ -21,7 +23,6 @@ class UsersController extends AppController {
         $this->request->allowMethod(['get']);
 
         $this->set('data', $this->Users->find());
-        $this->set('_serialize', true);
     }
 
     public function add()
