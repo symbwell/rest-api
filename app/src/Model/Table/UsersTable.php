@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\User;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Error\Exception\ValidationErrorException;
 
 /**
  * Users Model
@@ -106,5 +108,182 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
 
         return $rules;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getName(string $id): ?string
+    {
+        return $this->get($id)->get('name');
+    }
+
+    /**
+     * @param string $id
+     * @param string $name
+     * @return \App\Model\Entity\User
+     */
+    public function setName(string $id, string $name): User
+    {
+        $user = $this->get($id);
+        $user->set('name', $name);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getSurname(string $id): ?string
+    {
+        return $this->get($id)->get('surname');
+    }
+
+    /**
+     * @param string $id
+     * @param string $name
+     * @return \App\Model\Entity\User
+     */
+    public function setSurname(string $id, string $surname): User
+    {
+        $user = $this->get($id);
+        $user->set('surname', $surname);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getAge(string $id): ?string
+    {
+        return $this->get($id)->get('age');
+    }
+
+    /**
+     * @param string $id
+     * @param string $age
+     * @return \App\Model\Entity\User
+     */
+    public function setAge(string $id, string $age): User
+    {
+        $user = $this->get($id);
+        $user->set('age', $age);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getSalary(string $id): ?string
+    {
+        return $this->get($id)->get('salary');
+    }
+
+    /**
+     * @param string $id
+     * @param string $salary
+     * @return \App\Model\Entity\User
+     */
+    public function setSalary(string $id, string $salary): User
+    {
+        $user = $this->get($id);
+        $user->set('salary', $salary);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getPhone(string $id): ?string
+    {
+        return $this->get($id)->get('phone');
+    }
+
+    /**
+     * @param string $id
+     * @param string $phone
+     * @return \App\Model\Entity\User
+     */
+    public function setPhone(string $id, string $phone): User
+    {
+        $user = $this->get($id);
+        $user->set('phone', $phone);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getEmail(string $id): ?string
+    {
+        return $this->get($id)->get('email');
+    }
+
+    /**
+     * @param string $id
+     * @param string $email
+     * @return \App\Model\Entity\User
+     */
+    public function setEmail(string $id, string $email): User
+    {
+        $user = $this->get($id);
+        $user->set('email', $email);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function getPassword(string $id): ?string
+    {
+        return $this->get($id)->get('password');
+    }
+
+    public function setPassword(string $id, string $password): User
+    {
+        $user = $this->get($id);
+        $user->set('password', $password);
+
+        if (!$this->save($user)) {
+            throw new ValidationErrorException($user);
+        }
+
+        return $user;
     }
 }
